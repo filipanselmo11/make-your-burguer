@@ -88,6 +88,17 @@
       ],
       "status": "Solicitado",
       "id": 1
+    },
+    {
+      "nome": "Naruto",
+      "carne": "Alcatra",
+      "pao": "Parmesão e Orégano",
+      "opcionais": [
+        "Bacon",
+        "Cebola roxa"
+      ],
+      "status": "Solicitado",
+      "id": 2
     }
   ]
 }

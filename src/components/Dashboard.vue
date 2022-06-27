@@ -1,4 +1,5 @@
 <template>
+  <message :msg="msg"></message>
   <div id="burger-table">
     <div>
       <div id="burger-table-heading">
@@ -22,7 +23,11 @@
             </ul>
           </div>
           <div>
-            <select name="status" class="status" @change="updatedBurger($event, burger.id)">
+            <select
+              name="status"
+              class="status"
+              @change="updatedBurger($event, burger.id)"
+            >
               <option value="">Selecione</option>
               <option
                 v-for="s in status"
@@ -42,6 +47,7 @@
 </template>
 
 <script>
+import Message from "./Message.vue";
 export default {
   name: "Dashboard",
   data() {
@@ -49,8 +55,10 @@ export default {
       burgers: null,
       burger_id: null,
       status: [],
+      msg: null,
     };
   },
+  components: { Message },
   mounted() {
     this.getPedidos();
   },
@@ -76,6 +84,10 @@ export default {
 
       const res = await req.json();
 
+      this.msg = `Pedido removido com sucesso`;
+
+      setTimeout(() => (this.msg = ""), 3000);
+
       //msg
 
       this.getPedidos();
@@ -92,7 +104,10 @@ export default {
       });
 
       const res = await req.json();
-      console.log(res);
+      // console.log(res);
+      this.msg = `O pedido N° ${res.id} foi atualizado para ${res.status}`;
+
+      setTimeout(() => (this.msg = ""), 3000);
     },
   },
 };
